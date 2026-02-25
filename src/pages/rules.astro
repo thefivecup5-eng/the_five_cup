@@ -1,0 +1,90 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Règlement — The 5 Cup">
+  <Header />
+  <main>
+    <section class="stub-hero">
+      <div class="stub-inner">
+        <span class="stub-eyebrow">The 5 Cup</span>
+        <h1 class="stub-title">Le <span class="gold">Règlement</span></h1>
+        <div class="rules-content">
+          <div class="rule-block">
+            <h3>1. Composition des Équipes</h3>
+            <p>6 joueurs sur le terrain par équipe. Maximum 10 joueurs par équipe au total. Minimum 1 joueuse sur le terrain à tout moment.</p>
+          </div>
+          <div class="rule-block">
+            <h3>2. Format des Matchs</h3>
+            <p>Chaque match dure 2 × 15 minutes. En cas d'égalité, la règle du but en or s'applique. Si nécessaire, une séance de tirs au but avec 3 tireurs départage les équipes.</p>
+          </div>
+          <div class="rule-block">
+            <h3>3. Phase de Poules</h3>
+            <p>3 poules de 5 équipes. Chaque équipe affronte toutes les autres de sa poule. Les 2 premières de chaque poule sont qualifiées pour la phase finale.</p>
+          </div>
+          <div class="rule-block">
+            <h3>4. Phase Finale</h3>
+            <p>Quarts de finale, demi-finales et finale. Un match pour la 3ème place est également prévu.</p>
+          </div>
+          <div class="rule-block">
+            <h3>5. Fair-Play</h3>
+            <p>Tout comportement antisportif sera sanctionné. Les cartons jaunes et rouges s'appliquent. Un classement fair-play est tenu.</p>
+          </div>
+        </div>
+        <a href="/competition" class="btn btn-outline">← Voir la compétition</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .stub-hero {
+    background: var(--bottle);
+    padding: 160px 40px 100px;
+    min-height: 80vh;
+  }
+  .stub-inner { max-width: 800px; margin: 0 auto; }
+  .stub-eyebrow {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 20px;
+  }
+  .stub-title {
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.9;
+    color: var(--cream);
+    margin-bottom: 48px;
+  }
+  .gold { color: var(--gold); }
+  .rules-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .rule-block {
+    padding: 24px 28px;
+    background: rgba(255,255,255,0.05);
+    border-left: 2px solid var(--gold);
+  }
+  .rule-block h3 {
+    font-size: 1rem;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .rule-block p {
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.6);
+    line-height: 1.7;
+  }
+  @media (max-width: 768px) {
+    .stub-hero { padding: 140px 24px 80px; }
+  }
+</style>

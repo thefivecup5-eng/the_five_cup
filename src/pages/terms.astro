@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Conditions d'utilisation — The 5 Cup">
+  <Header />
+  <main>
+    <section class="legal-hero">
+      <div class="legal-inner">
+        <span class="legal-eyebrow">Juridique</span>
+        <h1 class="legal-title">Conditions <span class="gold">d'Utilisation</span></h1>
+        <div class="legal-content">
+          <p>En accédant à ce site, vous acceptez les présentes conditions d'utilisation de The 5 Cup.</p>
+          <h3>Inscription</h3>
+          <p>L'inscription à l'événement vaut acceptation du règlement de la compétition. Le tarif est de 12€ par personne, non remboursable sauf annulation de l'événement par les organisateurs.</p>
+          <h3>Responsabilité</h3>
+          <p>Les organisateurs déclinent toute responsabilité en cas de blessure survenue pendant l'événement. Les participants sont invités à souscrire une assurance sportive.</p>
+          <h3>Propriété intellectuelle</h3>
+          <p>L'ensemble du contenu de ce site (textes, images, logos) est la propriété de The 5 Cup et ne peut être reproduit sans autorisation.</p>
+        </div>
+        <a href="/" class="btn btn-outline">← Retour à l'accueil</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal-hero { background: var(--bottle); padding: 160px 40px 100px; min-height: 80vh; }
+  .legal-inner { max-width: 800px; margin: 0 auto; }
+  .legal-eyebrow { display: inline-block; font-family: 'Syne', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); margin-bottom: 20px; }
+  .legal-title { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 0.95; color: var(--cream); margin-bottom: 48px; }
+  .gold { color: var(--gold); }
+  .legal-content { margin-bottom: 48px; }
+  .legal-content p { font-size: 0.9rem; color: rgba(245,240,232,0.6); line-height: 1.8; margin-bottom: 20px; }
+  .legal-content h3 { font-size: 1.1rem; color: var(--cream); margin-bottom: 8px; margin-top: 32px; }
+  @media (max-width: 768px) { .legal-hero { padding: 140px 24px 80px; } }
+</style>

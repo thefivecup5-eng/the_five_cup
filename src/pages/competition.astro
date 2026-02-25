@@ -1,0 +1,478 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import MarqueeBanner from '../components/MarqueeBanner.astro';
+import Footer from '../components/Footer.astro';
+
+const TICKET_LINK = "https://auvencecom-my.sharepoint.com/:x:/g/personal/amine_himiche_ynov_com/IQDMe_xSW0vaSYTgAldFmqcrAby2Rb4OcKezn9nKhdTBMf0?e=UFSTil";
+
+const teamsByPoule = {
+  terre: {
+    teams: ['Équipe 1', 'Équipe 2', 'Équipe 3', 'Équipe 4', 'Équipe 5'],
+    logos: [
+      '/assets/teams/poule_terre_equipe1.png',
+      '/assets/teams/poule_terre_equipe2.png',
+      '/assets/teams/poule_terre_equipe3.png',
+      '/assets/teams/poule_terre_equipe4.png',
+      '/assets/teams/poule_terre_equipe5.png',
+    ],
+  },
+  air: {
+    teams: ['Équipe 1', 'Équipe 2', 'Équipe 3', 'Équipe 4', 'Équipe 5'],
+    logos: [
+      '/assets/teams/poule_air_equipe1.png',
+      '/assets/teams/poule_air_equipe2.png',
+      '/assets/teams/poule_air_equipe3.png',
+      '/assets/teams/poule_air_equipe4.png',
+      '/assets/teams/poule_air_equipe5.png',
+    ],
+  },
+  eau: {
+    teams: ['Équipe 1', 'Équipe 2', 'Équipe 3', 'Équipe 4', 'Équipe 5'],
+    logos: [
+      '/assets/teams/poule_eau_equipe1.png',
+      '/assets/teams/poule_eau_equipe2.png',
+      '/assets/teams/poule_eau_equipe3.png',
+      '/assets/teams/poule_eau_equipe4.png',
+      '/assets/teams/poule_eau_equipe5.png',
+    ],
+  },
+};
+
+const pouleConfig = {
+  terre: { label: 'Poule Terre', icon: '🏔️', accent: '#C9A84C', logo: '/assets/poules/poule_terre.png' },
+  air: { label: 'Poule Air', icon: '💨', accent: '#7EB8F7', logo: '/assets/poules/poule_air.png' },
+  eau: { label: 'Poule Eau', icon: '💧', accent: '#4ECDC4', logo: '/assets/poules/poule_eau.png' },
+};
+
+const rules = [
+  {
+    title: 'Composition des Équipes',
+    items: [
+      '6 joueurs par équipe sur le terrain',
+      'Maximum de 10 joueurs par équipe',
+      'Minimum 1 joueuse sur le terrain à tout moment',
+    ],
+  },
+  {
+    title: 'Format des Matchs',
+    items: [
+      '2 × 15 minutes par match',
+      'Règle du but en or en cas d\'égalité',
+      'Tirs au but si nécessaire (3 tireurs)',
+    ],
+  },
+  {
+    title: 'Phase Finale',
+    items: [
+      'Les 2 premiers de chaque poule qualifiés',
+      'Quarts de finale, demi-finales, finale',
+      'Match pour la 3ème place',
+    ],
+  },
+];
+---
+
+<Layout title="Compétition — The 5 Cup">
+  <Header />
+  <main style="padding-top: 0;">
+
+    <!-- Page hero -->
+    <section class="page-hero">
+      <div class="page-hero-inner">
+        <span class="page-eyebrow">The 5 Cup 2026</span>
+        <h1 class="page-title">La<br/><span class="gold">Compétition</span></h1>
+        <div class="hero-info-grid">
+          <div class="hero-info-item">
+            <span class="info-label">Date</span>
+            <span class="info-val">29 Avril 2026</span>
+          </div>
+          <div class="hero-info-item">
+            <span class="info-label">Lieu</span>
+            <span class="info-val">UrbanSoccer Toulouse</span>
+          </div>
+          <div class="hero-info-item">
+            <span class="info-label">Inscription</span>
+            <span class="info-val">12€ / personne</span>
+          </div>
+        </div>
+        <a href={TICKET_LINK} target="_blank" rel="noopener noreferrer" class="btn btn-gold">
+          S'inscrire maintenant →
+        </a>
+      </div>
+    </section>
+
+    <MarqueeBanner />
+
+    <!-- Teams by pool -->
+    <section class="teams-section">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <span class="section-tag">Participants</span>
+          <h2 class="section-title">Les Équipes</h2>
+        </div>
+
+        <div class="teams-grid">
+          {Object.entries(teamsByPoule).map(([key, data]) => {
+            const config = pouleConfig[key as keyof typeof pouleConfig];
+            return (
+              <div class="poule-col reveal">
+                <div class="poule-col-header" style={`border-color: ${config.accent}`}>
+                  <img src={config.logo} alt={config.label} class="poule-header-logo" />
+                  <h3 class="poule-col-title">{config.label}</h3>
+                </div>
+                <ul class="teams-list">
+                  {data.teams.map((team, i) => (
+                    <li class="team-item">
+                      <img src={data.logos[i]} alt={team} class="team-item-logo" loading="lazy" />
+                      <span class="team-name">{team}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <MarqueeBanner
+      reverse={true}
+      bgColor="#0a0a0a"
+      textColor="rgba(245,240,232,0.2)"
+      items={['RÈGLEMENT', 'FAIR-PLAY', 'ESPRIT SPORTIF', 'THE 5 CUP', 'TOULOUSE']}
+    />
+
+    <!-- Rules -->
+    <section class="rules-section">
+      <div class="section-inner">
+        <div class="section-header reveal">
+          <span class="section-tag">Règles</span>
+          <h2 class="section-title">Règlement</h2>
+        </div>
+
+        <div class="rules-grid">
+          {rules.map((rule, i) => (
+            <div class="rule-card reveal" style={`animation-delay: ${i * 0.1}s`}>
+              <span class="rule-num">0{i + 1}</span>
+              <h3 class="rule-title">{rule.title}</h3>
+              <ul class="rule-list">
+                {rule.items.map(item => (
+                  <li class="rule-item">
+                    <span class="rule-bullet"></span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bottom-cta">
+      <div class="bottom-cta-inner reveal">
+        <h2>Rejoignez la Compétition</h2>
+        <p>Places limitées — Inscrivez votre équipe dès maintenant</p>
+        <a href={TICKET_LINK} target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          Enregistrer votre équipe — 12€/pers
+        </a>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  /* Page hero */
+  .page-hero {
+    background: var(--bottle);
+    padding: 160px 40px 100px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-hero::after {
+    content: '';
+    position: absolute;
+    right: -10%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 60vw;
+    height: 60vw;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.05);
+    pointer-events: none;
+  }
+
+  .page-hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .page-eyebrow {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 20px;
+  }
+
+  .page-title {
+    font-size: clamp(3rem, 10vw, 9rem);
+    line-height: 0.9;
+    color: var(--cream);
+    margin-bottom: 48px;
+  }
+
+  .gold {
+    color: var(--gold);
+  }
+
+  .hero-info-grid {
+    display: flex;
+    gap: 48px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .info-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+  }
+
+  .info-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--cream);
+  }
+
+  /* Sections */
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .section-header {
+    margin-bottom: 60px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    padding: 6px 14px;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--cream);
+  }
+
+  /* Teams */
+  .teams-section {
+    background: #0f0f0f;
+    padding: 100px 0;
+  }
+
+  .teams-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .poule-col {
+    background: #141414;
+    padding: 36px 28px;
+  }
+
+  .poule-col-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-left: 3px solid;
+    padding-left: 16px;
+    margin-bottom: 28px;
+  }
+
+  .poule-header-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 6px;
+  }
+
+  .poule-col-title {
+    font-size: 1.1rem;
+    color: var(--cream);
+  }
+
+  .teams-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .team-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.7);
+    transition: color 0.2s;
+  }
+
+  .team-item:hover {
+    color: var(--cream);
+  }
+
+  .team-item-logo {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    padding: 3px;
+    flex-shrink: 0;
+  }
+
+  .team-name {
+    font-family: 'Archivo', sans-serif;
+  }
+
+  /* Rules */
+  .rules-section {
+    background: var(--dark);
+    padding: 100px 0;
+  }
+
+  .rules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .rule-card {
+    background: #0f0f0f;
+    padding: 40px 32px;
+    position: relative;
+  }
+
+  .rule-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--bottle);
+    transition: height 0.4s ease;
+  }
+
+  .rule-card:hover::before {
+    height: 100%;
+  }
+
+  .rule-num {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    color: rgba(245,240,232,0.2);
+    margin-bottom: 16px;
+  }
+
+  .rule-title {
+    font-size: 1.1rem;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+
+  .rule-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .rule-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.5;
+  }
+
+  .rule-bullet {
+    width: 4px;
+    height: 4px;
+    background: var(--bottle);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+
+  /* Bottom CTA */
+  .bottom-cta {
+    background: var(--bottle);
+    padding: 100px 40px;
+    text-align: center;
+  }
+
+  .bottom-cta-inner {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .bottom-cta h2 {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    color: var(--cream);
+    margin-bottom: 12px;
+  }
+
+  .bottom-cta p {
+    color: rgba(245,240,232,0.6);
+    margin-bottom: 32px;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 900px) {
+    .teams-grid,
+    .rules-grid {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+    .page-hero {
+      padding: 140px 24px 80px;
+    }
+    .section-inner {
+      padding: 0 24px;
+    }
+  }
+</style>

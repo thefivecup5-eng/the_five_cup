@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="À propos — The 5 Cup">
+  <Header />
+  <main>
+    <section class="stub-hero">
+      <div class="stub-inner">
+        <span class="stub-eyebrow">The 5 Cup</span>
+        <h1 class="stub-title">À <span class="gold">Propos</span></h1>
+        <p class="stub-desc">
+          The 5 Cup est une compétition de football organisée à Toulouse. 
+          Trois poules — Terre, Air, Eau — s'affrontent dans un tournoi qui 
+          célèbre l'athlétisme, l'esprit d'équipe et la compétition.
+        </p>
+        <div class="stub-details">
+          <div class="detail-card">
+            <span class="detail-icon">🏆</span>
+            <h3>Notre Mission</h3>
+            <p>Rassembler les passionnés de football autour d'un événement sportif unique, fondé sur le fair-play et l'esprit élémentaire.</p>
+          </div>
+          <div class="detail-card">
+            <span class="detail-icon">📍</span>
+            <h3>Le Lieu</h3>
+            <p>UrbanSoccer Toulouse Sept Deniers — un complexe sportif moderne situé au 2 Rue de l'Égalité, 31200 Toulouse.</p>
+          </div>
+          <div class="detail-card">
+            <span class="detail-icon">📅</span>
+            <h3>L'Événement</h3>
+            <p>Le 29 Avril 2026, 15 équipes réparties en 3 poules s'affronteront pour décrocher le titre de champion.</p>
+          </div>
+        </div>
+        <a href="/" class="btn btn-outline">← Retour à l'accueil</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .stub-hero {
+    background: var(--bottle);
+    padding: 160px 40px 100px;
+    min-height: 80vh;
+  }
+  .stub-inner {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .stub-eyebrow {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 20px;
+  }
+  .stub-title {
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.9;
+    color: var(--cream);
+    margin-bottom: 32px;
+  }
+  .gold { color: var(--gold); }
+  .stub-desc {
+    font-size: 1.05rem;
+    color: rgba(245,240,232,0.7);
+    line-height: 1.8;
+    max-width: 600px;
+    margin-bottom: 48px;
+  }
+  .stub-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+  }
+  .detail-card {
+    background: rgba(255,255,255,0.05);
+    padding: 32px 24px;
+    border-left: 2px solid var(--gold);
+  }
+  .detail-icon { font-size: 1.5rem; display: block; margin-bottom: 12px; }
+  .detail-card h3 {
+    font-size: 1rem;
+    color: var(--cream);
+    margin-bottom: 8px;
+  }
+  .detail-card p {
+    font-size: 0.85rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.6;
+  }
+  @media (max-width: 768px) {
+    .stub-hero { padding: 140px 24px 80px; }
+  }
+</style>

@@ -1,0 +1,127 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const faqs = [
+  { q: 'Quand a lieu The 5 Cup ?', a: 'Le 29 avril 2026, à UrbanSoccer Toulouse Sept Deniers.' },
+  { q: 'Combien coûte l\'inscription ?', a: '12€ par personne. L\'inscription se fait en ligne via notre billetterie.' },
+  { q: 'Combien de joueurs par équipe ?', a: '6 joueurs sur le terrain, avec un maximum de 10 joueurs par équipe.' },
+  { q: 'Y a-t-il une obligation de mixité ?', a: 'Oui, un minimum d\'une joueuse doit être sur le terrain à tout moment.' },
+  { q: 'Comment sont organisées les poules ?', a: '3 poules de 5 équipes : Poule Terre, Poule Air et Poule Eau. Chaque poule incarne un élément.' },
+  { q: 'Que se passe-t-il en cas d\'égalité ?', a: 'La règle du but en or s\'applique. Si le score reste nul, des tirs au but avec 3 tireurs départagent les équipes.' },
+  { q: 'Où se déroule l\'événement ?', a: 'UrbanSoccer Toulouse Sept Deniers — 2 Rue de l\'Égalité, 31200 Toulouse.' },
+  { q: 'Comment suivre l\'actualité ?', a: 'Suivez-nous sur Instagram @the_five_cup pour toutes les infos, coulisses et résultats.' },
+];
+---
+
+<Layout title="FAQ — The 5 Cup">
+  <Header />
+  <main>
+    <section class="faq-hero">
+      <div class="faq-inner">
+        <span class="eyebrow">Aide</span>
+        <h1 class="faq-title"><span class="gold">FAQ</span></h1>
+        <p class="faq-desc">Tout ce que vous devez savoir sur The 5 Cup.</p>
+      </div>
+    </section>
+
+    <section class="faq-content">
+      <div class="faq-content-inner">
+        {faqs.map((faq, i) => (
+          <details class="faq-item">
+            <summary class="faq-question">
+              <span class="faq-num">0{i + 1}</span>
+              {faq.q}
+              <span class="faq-chevron">+</span>
+            </summary>
+            <p class="faq-answer">{faq.a}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .faq-hero {
+    background: var(--bottle);
+    padding: 160px 40px 100px;
+  }
+  .faq-inner { max-width: 800px; margin: 0 auto; }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.4);
+    margin-bottom: 20px;
+  }
+  .faq-title {
+    font-size: clamp(3rem, 10vw, 7rem);
+    line-height: 0.9;
+    color: var(--cream);
+    margin-bottom: 20px;
+  }
+  .gold { color: var(--gold); }
+  .faq-desc {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.6);
+  }
+  .faq-content {
+    background: #0f0f0f;
+    padding: 80px 40px;
+  }
+  .faq-content-inner {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .faq-item {
+    background: #141414;
+    border: none;
+  }
+  .faq-question {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px 28px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--cream);
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.2s;
+  }
+  .faq-question::-webkit-details-marker { display: none; }
+  .faq-question:hover { background: #1a1a1a; }
+  .faq-num {
+    font-size: 0.7rem;
+    color: var(--gold);
+    opacity: 0.6;
+    min-width: 24px;
+  }
+  .faq-chevron {
+    margin-left: auto;
+    font-size: 1.2rem;
+    color: rgba(245,240,232,0.3);
+    transition: transform 0.2s;
+  }
+  details[open] .faq-chevron { transform: rotate(45deg); }
+  .faq-answer {
+    padding: 0 28px 24px 68px;
+    font-size: 0.9rem;
+    color: rgba(245,240,232,0.55);
+    line-height: 1.7;
+  }
+  @media (max-width: 768px) {
+    .faq-hero { padding: 140px 24px 80px; }
+    .faq-content { padding: 60px 24px; }
+    .faq-answer { padding-left: 28px; }
+  }
+</style>

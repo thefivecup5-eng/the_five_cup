@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Politique de confidentialité — The 5 Cup">
+  <Header />
+  <main>
+    <section class="legal-hero">
+      <div class="legal-inner">
+        <span class="legal-eyebrow">Juridique</span>
+        <h1 class="legal-title">Politique de <span class="gold">Confidentialité</span></h1>
+        <div class="legal-content">
+          <p>Cette page détaille notre politique de confidentialité et de traitement des données personnelles dans le cadre de l'événement The 5 Cup.</p>
+          <h3>Collecte de données</h3>
+          <p>Les données collectées lors de l'inscription (nom, prénom, email, téléphone) sont utilisées uniquement dans le cadre de l'organisation de l'événement.</p>
+          <h3>Conservation</h3>
+          <p>Vos données sont conservées le temps nécessaire à l'organisation de l'événement et supprimées dans les 6 mois suivant la compétition.</p>
+          <h3>Contact</h3>
+          <p>Pour toute question relative à vos données personnelles, contactez-nous à <a href="mailto:thefivecup5@gmail.com">thefivecup5@gmail.com</a>.</p>
+        </div>
+        <a href="/" class="btn btn-outline">← Retour à l'accueil</a>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal-hero { background: var(--bottle); padding: 160px 40px 100px; min-height: 80vh; }
+  .legal-inner { max-width: 800px; margin: 0 auto; }
+  .legal-eyebrow { display: inline-block; font-family: 'Syne', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,240,232,0.4); margin-bottom: 20px; }
+  .legal-title { font-size: clamp(2.5rem, 8vw, 5rem); line-height: 0.95; color: var(--cream); margin-bottom: 48px; }
+  .gold { color: var(--gold); }
+  .legal-content { margin-bottom: 48px; }
+  .legal-content p { font-size: 0.9rem; color: rgba(245,240,232,0.6); line-height: 1.8; margin-bottom: 20px; }
+  .legal-content h3 { font-size: 1.1rem; color: var(--cream); margin-bottom: 8px; margin-top: 32px; }
+  .legal-content a { color: var(--gold); }
+  @media (max-width: 768px) { .legal-hero { padding: 140px 24px 80px; } }
+</style>

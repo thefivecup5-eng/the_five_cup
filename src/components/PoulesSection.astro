@@ -1,0 +1,387 @@
+---
+const poules = [
+  {
+    name: 'Poule Terre',
+    element: 'Terre',
+    icon: '🏔️',
+    letter: 'T',
+    logo: '/assets/poules/poule_terre.png',
+    traits: ['Force', 'Résilience', 'Détermination'],
+    teams: [
+      { name: 'Équipe 1', logo: '/assets/teams/poule_terre_equipe1.png' },
+      { name: 'Équipe 2', logo: '/assets/teams/poule_terre_equipe2.png' },
+      { name: 'Équipe 3', logo: '/assets/teams/poule_terre_equipe3.png' },
+      { name: 'Équipe 4', logo: '/assets/teams/poule_terre_equipe4.png' },
+      { name: 'Équipe 5', logo: '/assets/teams/poule_terre_equipe5.png' },
+    ],
+    color: '#5C4A1E',
+    accent: '#C9A84C',
+  },
+  {
+    name: 'Poule Air',
+    element: 'Air',
+    icon: '💨',
+    letter: 'A',
+    logo: '/assets/poules/poule_air.png',
+    traits: ['Légèreté', 'Fluidité', 'Vitesse'],
+    teams: [
+      { name: 'Équipe 1', logo: '/assets/teams/poule_air_equipe1.png' },
+      { name: 'Équipe 2', logo: '/assets/teams/poule_air_equipe2.png' },
+      { name: 'Équipe 3', logo: '/assets/teams/poule_air_equipe3.png' },
+      { name: 'Équipe 4', logo: '/assets/teams/poule_air_equipe4.png' },
+      { name: 'Équipe 5', logo: '/assets/teams/poule_air_equipe5.png' },
+    ],
+    color: '#1A2C4E',
+    accent: '#7EB8F7',
+  },
+  {
+    name: 'Poule Eau',
+    element: 'Eau',
+    icon: '💧',
+    letter: 'E',
+    logo: '/assets/poules/poule_eau.png',
+    traits: ['Fluidité', 'Adaptabilité', 'Profondeur'],
+    teams: [
+      { name: 'Équipe 1', logo: '/assets/teams/poule_eau_equipe1.png' },
+      { name: 'Équipe 2', logo: '/assets/teams/poule_eau_equipe2.png' },
+      { name: 'Équipe 3', logo: '/assets/teams/poule_eau_equipe3.png' },
+      { name: 'Équipe 4', logo: '/assets/teams/poule_eau_equipe4.png' },
+      { name: 'Équipe 5', logo: '/assets/teams/poule_eau_equipe5.png' },
+    ],
+    color: '#043927',
+    accent: '#4ECDC4',
+  },
+];
+
+const stats = [
+  { val: '15', label: 'Équipes' },
+  { val: '90', label: 'Joueurs' },
+  { val: '3', label: 'Poules' },
+  { val: '1', label: 'Champion' },
+];
+---
+
+<section class="poules-section">
+  <div class="poules-inner">
+    <!-- Header -->
+    <div class="section-header reveal">
+      <span class="section-tag">Structure</span>
+      <h2 class="section-title">Trois Éléments,<br/>Un Championnat</h2>
+      <p class="section-desc">Chaque poule incarne une force élémentaire unique.<br/>Quel élément régnera en maître ?</p>
+    </div>
+
+    <!-- Cards -->
+    <div class="poules-grid">
+      {poules.map((poule, i) => (
+        <article class="poule-card reveal" style={`animation-delay: ${i * 0.15}s; --accent: ${poule.accent}; --card-bg: ${poule.color};`}>
+          <div class="card-bg-letter">{poule.letter}</div>
+          <div class="card-header">
+            <img src={poule.logo} alt={`Logo ${poule.name}`} class="card-poule-logo" />
+            <span class="card-num">0{i + 1}</span>
+          </div>
+          <h3 class="card-name">{poule.name}</h3>
+          <p class="card-element">{poule.element}</p>
+          <div class="card-traits">
+            {poule.traits.map(trait => (
+              <span class="trait-tag">{trait}</span>
+            ))}
+          </div>
+          <!-- Team logos row -->
+          <div class="card-teams">
+            {poule.teams.map(team => (
+              <div class="team-logo-wrapper" title={team.name}>
+                <img src={team.logo} alt={team.name} class="team-logo-img" loading="lazy" />
+              </div>
+            ))}
+          </div>
+          <div class="card-stats">
+            <div class="card-stat">
+              <span class="card-stat-val">{poule.teams.length}</span>
+              <span class="card-stat-label">Équipes</span>
+            </div>
+            <div class="card-stat-sep"></div>
+            <div class="card-stat">
+              <span class="card-stat-val">{poule.teams.length * 6}</span>
+              <span class="card-stat-label">Joueurs</span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <!-- Global stats -->
+    <div class="global-stats reveal">
+      {stats.map((s) => (
+        <div class="global-stat">
+          <span class="global-stat-val">{s.val}</span>
+          <span class="global-stat-label">{s.label}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .poules-section {
+    background: #0f0f0f;
+    padding: 120px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .poules-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(201, 168, 76, 0.3), transparent);
+  }
+
+  .poules-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .section-tag {
+    display: inline-block;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201, 168, 76, 0.3);
+    padding: 6px 14px;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+
+  .section-desc {
+    font-size: 1rem;
+    color: rgba(245, 240, 232, 0.5);
+    line-height: 1.7;
+  }
+
+  /* Cards */
+  .poules-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+
+  .poule-card {
+    background: var(--card-bg, #043927);
+    padding: 48px 36px;
+    position: relative;
+    overflow: hidden;
+    cursor: default;
+    transition: transform 0.3s ease;
+  }
+
+  .poule-card:hover {
+    transform: translateY(-8px);
+    z-index: 2;
+  }
+
+  .card-bg-letter {
+    position: absolute;
+    right: -20px;
+    bottom: -30px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 10rem;
+    color: rgba(255,255,255,0.04);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+
+  .card-poule-logo {
+    width: 56px;
+    height: 56px;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  .card-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: rgba(255,255,255,0.2);
+  }
+
+  .card-name {
+    font-size: 1.6rem;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .card-element {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+
+  .card-traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .trait-tag {
+    font-family: 'Archivo', sans-serif;
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+  }
+
+  /* Team logos */
+  .card-teams {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .team-logo-wrapper {
+    width: 44px;
+    height: 44px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    transition: transform 0.2s, background 0.2s;
+    flex-shrink: 0;
+  }
+
+  .team-logo-wrapper:hover {
+    transform: scale(1.15);
+    background: rgba(255,255,255,0.15);
+  }
+
+  .team-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 50%;
+  }
+
+  .card-stats {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .card-stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-stat-val {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--accent);
+  }
+
+  .card-stat-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2px;
+  }
+
+  .card-stat-sep {
+    width: 1px;
+    height: 30px;
+    background: rgba(255,255,255,0.1);
+  }
+
+  /* Global stats */
+  .global-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--bottle);
+  }
+
+  .global-stat {
+    padding: 40px 32px;
+    text-align: center;
+    border-right: 1px solid rgba(255,255,255,0.08);
+    transition: background 0.2s;
+  }
+
+  .global-stat:last-child {
+    border-right: none;
+  }
+
+  .global-stat:hover {
+    background: var(--bottle-light);
+  }
+
+  .global-stat-val {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .global-stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, 0.5);
+  }
+
+  @media (max-width: 900px) {
+    .poules-grid {
+      grid-template-columns: 1fr;
+      gap: 2px;
+    }
+    .global-stats {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .global-stat {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .poules-section {
+      padding: 80px 24px;
+    }
+  }
+</style>
